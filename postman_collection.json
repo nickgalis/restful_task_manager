@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "task-manager-api-collection",
+		"name": "Task Management API",
+		"description": "Complete collection of endpoints for the Task Management RESTful API. This API allows you to manage users, categories, and tasks with full CRUD operations.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"description": "Endpoints for managing users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"john_doe\",\n  \"email\": \"john@example.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "users"]
+						},
+						"description": "Create a new user in the system.\n\n**Required fields:**\n- username (string, unique)\n- email (string)\n\n**Response:** 201 Created with user object"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"john_doe\",\n  \"email\": \"john@example.com\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/users",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "5000",
+									"path": ["api", "users"]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"username\": \"john_doe\",\n  \"email\": \"john@example.com\",\n  \"created_at\": \"2025-11-19T10:30:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/users/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "users", "1"]
+						},
+						"description": "Retrieve a specific user by their ID.\n\n**Response:** 200 OK with user object\n**Error:** 404 Not Found if user doesn't exist"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/users/1",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "5000",
+									"path": ["api", "users", "1"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"username\": \"john_doe\",\n  \"email\": \"john@example.com\",\n  \"created_at\": \"2025-11-19T10:30:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/users",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "users"]
+						},
+						"description": "Retrieve all users in the system.\n\n**Response:** 200 OK with array of user objects"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/users",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "5000",
+									"path": ["api", "users"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": 1,\n    \"username\": \"john_doe\",\n    \"email\": \"john@example.com\",\n    \"created_at\": \"2025-11-19T10:30:00\"\n  },\n  {\n    \"id\": 2,\n    \"username\": \"jane_smith\",\n    \"email\": \"jane@example.com\",\n    \"created_at\": \"2025-11-19T10:35:00\"\n  }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"description": "Endpoints for managing categories",
+			"item": [
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Work\",\n  \"description\": \"Work-related tasks\",\n  \"user_id\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/categories",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "categories"]
+						},
+						"description": "Create a new category for organizing tasks.\n\n**Required fields:**\n- name (string)\n- user_id (integer)\n\n**Optional fields:**\n- description (string)\n\n**Response:** 201 Created with category object"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Work\",\n  \"description\": \"Work-related tasks\",\n  \"user_id\": 1\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/categories",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "5000",
+									"path": ["api", "categories"]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"name\": \"Work\",\n  \"description\": \"Work-related tasks\",\n  \"user_id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/categories?user_id=1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "categories"],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"description": "Filter categories by user ID (optional)"
+								}
+							]
+						},
+						"description": "Retrieve all categories, optionally filtered by user.\n\n**Query parameters:**\n- user_id (integer, optional) - Filter by user\n\n**Response:** 200 OK with array of category objects"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/categories/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "categories", "1"]
+						},
+						"description": "Retrieve a specific category by ID.\n\n**Response:** 200 OK with category object\n**Error:** 404 Not Found if category doesn't exist"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Work Projects\",\n  \"description\": \"All work-related projects and tasks\",\n  \"user_id\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/categories/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "categories", "1"]
+						},
+						"description": "Update an existing category (full update).\n\n**Required fields:**\n- name (string)\n- user_id (integer)\n\n**Optional fields:**\n- description (string)\n\n**Response:** 200 OK with updated category object"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/categories/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "categories", "1"]
+						},
+						"description": "Delete a category. All associated tasks will also be deleted (cascade delete).\n\n**Response:** 200 OK with success message\n**Error:** 404 Not Found if category doesn't exist"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"description": "Endpoints for managing tasks",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Complete project documentation\",\n  \"description\": \"Write comprehensive documentation for the API\",\n  \"status\": \"pending\",\n  \"priority\": \"high\",\n  \"due_date\": \"2025-11-25T17:00:00\",\n  \"category_id\": 1,\n  \"user_id\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tasks",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "tasks"]
+						},
+						"description": "Create a new task.\n\n**Required fields:**\n- title (string)\n- category_id (integer)\n- user_id (integer)\n\n**Optional fields:**\n- description (string)\n- status (enum: pending, in_progress, completed) - default: pending\n- priority (enum: low, medium, high) - default: medium\n- due_date (ISO 8601 datetime string)\n\n**Response:** 201 Created with task object"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Complete project documentation\",\n  \"description\": \"Write comprehensive documentation for the API\",\n  \"status\": \"pending\",\n  \"priority\": \"high\",\n  \"due_date\": \"2025-11-25T17:00:00\",\n  \"category_id\": 1,\n  \"user_id\": 1\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/tasks",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "5000",
+									"path": ["api", "tasks"]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"title\": \"Complete project documentation\",\n  \"description\": \"Write comprehensive documentation for the API\",\n  \"status\": \"pending\",\n  \"priority\": \"high\",\n  \"due_date\": \"2025-11-25T17:00:00\",\n  \"category_id\": 1,\n  \"user_id\": 1,\n  \"created_at\": \"2025-11-19T10:30:00\",\n  \"updated_at\": \"2025-11-19T10:30:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/tasks?status=pending&priority=high&sort_by=due_date&order=asc",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "tasks"],
+							"query": [
+								{
+									"key": "status",
+									"value": "pending",
+									"description": "Filter by status (pending, in_progress, completed)"
+								},
+								{
+									"key": "priority",
+									"value": "high",
+									"description": "Filter by priority (low, medium, high)"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"description": "Filter by category ID",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"description": "Filter by user ID",
+									"disabled": true
+								},
+								{
+									"key": "sort_by",
+									"value": "due_date",
+									"description": "Sort field (due_date, created_at, priority, status, updated_at)"
+								},
+								{
+									"key": "order",
+									"value": "asc",
+									"description": "Sort order (asc, desc)"
+								}
+							]
+						},
+						"description": "Retrieve all tasks with optional filtering and sorting.\n\n**Query parameters (all optional):**\n- status - Filter by status (pending, in_progress, completed)\n- priority - Filter by priority (low, medium, high)\n- category_id - Filter by category ID\n- user_id - Filter by user ID\n- sort_by - Sort field (due_date, created_at, priority, status, updated_at) - default: created_at\n- order - Sort order (asc, desc) - default: desc\n\n**Response:** 200 OK with array of task objects"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/tasks/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "tasks", "1"]
+						},
+						"description": "Retrieve a specific task by ID.\n\n**Response:** 200 OK with task object\n**Error:** 404 Not Found if task doesn't exist"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task (Full)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Complete project documentation (Updated)\",\n  \"description\": \"Write comprehensive documentation with examples\",\n  \"status\": \"in_progress\",\n  \"priority\": \"high\",\n  \"due_date\": \"2025-11-26T17:00:00\",\n  \"category_id\": 1,\n  \"user_id\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tasks/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "tasks", "1"]
+						},
+						"description": "Perform a full update of a task. All fields must be provided.\n\n**Required fields:**\n- title (string)\n- category_id (integer)\n- user_id (integer)\n\n**Optional fields:**\n- description (string)\n- status (enum: pending, in_progress, completed)\n- priority (enum: low, medium, high)\n- due_date (ISO 8601 datetime string)\n\n**Response:** 200 OK with updated task object"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task (Partial)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"completed\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tasks/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "tasks", "1"]
+						},
+						"description": "Perform a partial update of a task. Only provide the fields you want to update.\n\n**Optional fields (at least one required):**\n- title (string)\n- description (string)\n- status (enum: pending, in_progress, completed)\n- priority (enum: low, medium, high)\n- due_date (ISO 8601 datetime string)\n- category_id (integer)\n- user_id (integer)\n\n**Response:** 200 OK with updated task object\n\n**Common use case:** Update just the status of a task"
+					},
+					"response": [
+						{
+							"name": "Update Status Only",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"completed\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/tasks/1",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "5000",
+									"path": ["api", "tasks", "1"]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"title\": \"Complete project documentation\",\n  \"description\": \"Write comprehensive documentation for the API\",\n  \"status\": \"completed\",\n  \"priority\": \"high\",\n  \"due_date\": \"2025-11-25T17:00:00\",\n  \"category_id\": 1,\n  \"user_id\": 1,\n  \"created_at\": \"2025-11-19T10:30:00\",\n  \"updated_at\": \"2025-11-19T15:45:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/tasks/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5000",
+							"path": ["api", "tasks", "1"]
+						},
+						"description": "Delete a task.\n\n**Response:** 200 OK with success message\n**Error:** 404 Not Found if task doesn't exist"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
