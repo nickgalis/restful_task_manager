@@ -38,7 +38,7 @@ def seed_data():
             db.add(user)
         
         db.commit()
-        print(f"✓ Created {len(users)} users")
+        print(f"Created {len(users)} users")
         
         # Create categories for each user
         categories = [
@@ -60,7 +60,7 @@ def seed_data():
             db.add(category)
         
         db.commit()
-        print(f"✓ Created {len(categories)} categories")
+        print(f"Created {len(categories)} categories")
         
         # Create sample tasks
         today = datetime.utcnow()
@@ -212,7 +212,7 @@ def seed_data():
             db.add(task)
         
         db.commit()
-        print(f"✓ Created {len(tasks)} tasks")
+        print(f"Created {len(tasks)} tasks")
         
         print("\n" + "="*50)
         print("Database seeded successfully!")
