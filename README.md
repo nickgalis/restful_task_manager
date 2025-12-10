@@ -4,16 +4,16 @@ A comprehensive RESTful API for managing tasks, categories, and users built with
 
 ## Features
 
-- ✅ Complete REST API with proper HTTP methods (GET, POST, PUT, PATCH, DELETE)
-- ✅ Three-tier data model: Users → Categories → Tasks
-- ✅ SQLite database with SQLAlchemy ORM
-- ✅ Input validation and comprehensive error handling
-- ✅ Advanced filtering and sorting for tasks
-- ✅ Cascade delete operations
-- ✅ Auto-populated timestamps
-- ✅ Well-documented endpoints
-- ✅ Sample data seeding script
-- ✅ Postman collection for testing
+- Complete REST API with proper HTTP methods (GET, POST, PUT, PATCH, DELETE)
+- Three-tier data model: Users → Categories → Tasks
+- SQLite database with SQLAlchemy ORM
+- Input validation and comprehensive error handling
+- Advanced filtering and sorting for tasks
+- Cascade delete operations
+- Auto-populated timestamps
+- Well-documented endpoints
+- Sample data seeding script
+- Postman collection for testing
 
 ## Technology Stack
 
